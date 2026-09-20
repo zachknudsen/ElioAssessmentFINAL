@@ -39,7 +39,7 @@ sql/
     analysis_answers.md
 ```
 
-The GitHub repository is connected to Databricks through a Databricks Git folder. Development was performed on multiple branches, with the repository providing version control for the ingestion code, bronze --> silver --> gold transformations, SQL queries, and data model documentation.
+The GitHub repository is connected to Databricks through a Databricks Git folder. Development was performed on multiple branches, with the repository providing version control for the ingestion code, bronze -> silver -> gold transformations, SQL queries, and data model documentation.
 
 ### Time-box Assumptions and Shortcuts
 
