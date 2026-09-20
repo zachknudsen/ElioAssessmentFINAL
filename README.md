@@ -67,3 +67,21 @@ is resolved through `sales_order_items`.
 
 The Gold layer subsequently reshapes this model into a dimensional model
 with surrogate keys for analytical use.
+
+### A4: Silver → Gold
+
+The Silver layer contains normalized, conformed tables for customers, products, and sales order items. Data is cleaned, deduplicated, and enriched with `_loaded_at` and `_source` metadata.
+
+The Gold layer deliberately denormalizes this data into a star schema for analytics:
+
+- `dim_customer` — customer dimension with a surrogate `customer_key` and historical customer versions.
+- `dim_product` — product dimension using the stable `product_id` business key.
+- `fact_sales` — order-line fact table containing transaction metrics, order dates, customer keys, and product IDs.
+
+Silver is normalized to keep data cleaning and conformance modular, while Gold uses a star schema to simplify analytical queries and reduce unnecessary joins.
+
+### Data quality considerations
+
+Some sales records contain missing `order_datetime` values, so a customer version cannot always be determined from the customer's historical validity period. In these cases, `customer_key` remains null rather than assigning an incorrect customer version.
+
+A small number of records have valid order timestamps that fall into gaps between historical customer versions. These are also retained with a null `customer_key` because no valid customer version exists for the transaction date.
