@@ -1,4 +1,3 @@
-%md
 ## A3 - Normalised Data Model
 
 ### 3NF Logical Model
