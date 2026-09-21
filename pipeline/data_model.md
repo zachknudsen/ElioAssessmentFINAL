@@ -24,12 +24,14 @@ The Silver layer is modeled into four logical entities:
 | lon | |
 | lat | |
 | ship_to_address | |
-| valid_from | |
-| valid_to | |
+| valid_from | (PK)|
+| valid_to | (PK)|
 | units_purchased | |
 | loyalty_segment | |
 
 Customer versions are retained using `valid_from` and `valid_to`.
+
+The composite LOGICAL key for Customer is (customer_id, valid_from, valid_to), representing the customer and its validity period.
 
 #### Product
 
@@ -81,7 +83,7 @@ The composite primary key for Sales Order Item is `(order_number, line_number)`.
 
 | Entity | Primary Key | Foreign Keys |
 |---|---|---|
-| Customer | `customer_id` | — |
+| Customer | `customer_id`, `valid_from`, `valid_to` | — |
 | Product | `product_id` | — |
 | Sales Order | `order_number` | `customer_id` → Customer |
 | Sales Order Item | `(order_number, line_number)` | `order_number` → Sales Order, `product_id` → Product |
