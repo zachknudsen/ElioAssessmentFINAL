@@ -12,11 +12,11 @@
 
 The pipeline can be reproduced in the following order:
 
-1. Run `ingest/load_bronze.py` to create the Bronze tables.
-2. Run `pipeline/01_create_tables.sql` to create the required schemas/tables.
-3. Run `pipeline/02_bronze_to_silver.py` to build the Silver tables.
-4. Run `pipeline/03_silver_to_gold.py` to build the Gold tables.
-5. Run `sql/analytics_queries.sql` to execute the required analytics queries.
+1. Run `ingest/load_bronze.py` to create the Bronze tables
+2. Run `pipeline/01_create_tables.sql` to create the required schemas/tables
+3. Run `pipeline/02_bronze_to_silver.py` to build the Silver tables
+4. Run `pipeline/03_silver_to_gold.py` to build the Gold tables
+5. Run `sql/analytics_queries.sql` to execute the required analytics queries
 
 Note: Step 2 only needs to be run once to create the Silver and Gold Spark tables.
 
@@ -45,11 +45,11 @@ The GitHub repository is connected to Databricks through a Databricks Git folder
 
 Given the time-boxed nature of the assessment:
 
-* The pipeline uses full-refresh processing rather than an incremental ingestion framework.
-* Spark schema inference is used for Bronze ingestion rather than maintaining explicit source schemas.
-* The current implementation uses Databricks Free Edition rather than separate development and production environments.
+* The pipeline uses full-refresh processing rather than an incremental ingestion framework
+* Spark schema inference is used for Bronze ingestion rather than maintaining explicit source schemas
+* The current implementation uses Databricks Free Edition rather than separate development and production environments
 * Automated CI/CD, DLT/dbt, and production deployment infrastructure were not implemented.
-* Production-oriented approaches such as incremental `MERGE` processing and separate development/production catalogs are documented where relevant rather than implemented.
+* Production-oriented approaches such as incremental `MERGE` processing and separate development/production catalogs are documented where relevant rather than implemented
 
 # **STEP BY STEP INSTRUCTIONS**
 
